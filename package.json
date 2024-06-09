@@ -1,0 +1,21 @@
+{
+  "name": "crypto-geek-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type":"module",
+  "scripts": {
+    "dev": "bun run src/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": { 
+    "bip32": "^4.0.0",
+    "bip39": "^3.1.0",
+    "bitcoinjs-lib": "^6.1.5",
+    "bs58": "^5.0.0",
+    "elliptic": "^6.5.5",
+    "tiny-secp256k1": "^2.2.3"
+  }
+}
