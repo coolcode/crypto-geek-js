@@ -11,11 +11,6 @@
     pubkey: account.publicKey,
     network
   })
-
-  return {
-    address,
-    account
-  }
 ```
 
 To install dependencies:
