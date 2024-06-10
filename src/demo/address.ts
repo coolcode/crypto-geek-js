@@ -5,7 +5,7 @@ import * as bs58 from 'bs58'
 import * as crypto from 'crypto'
 import { bip32, sha256 } from "~/util"
 
-const gen00 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
+export const gen00 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
   const { address } = bitcoin.payments.p2pkh({
     pubkey: account.publicKey,
     network
@@ -14,7 +14,7 @@ const gen00 = (account: BIP32Interface, network: bitcoin.Network): string | unde
   return address
 }
 
-const gen01 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
+export const gen01 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
   const keyPair = bip32.fromPrivateKey(account.privateKey, account.chainCode, network)
   const { address } = bitcoin.payments.p2pkh({
     pubkey: keyPair.publicKey,
@@ -24,7 +24,7 @@ const gen01 = (account: BIP32Interface, network: bitcoin.Network): string | unde
   return address
 }
 
-const gen02 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => { 
+export const gen02 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => { 
 
   // Get the public key
   // const secp256k1 = new ec('secp256k1')
@@ -49,5 +49,4 @@ const gen02 = (account: BIP32Interface, network: bitcoin.Network): string | unde
 
   return address
 }
-
-export { gen00, gen01, gen02 }
+ 
