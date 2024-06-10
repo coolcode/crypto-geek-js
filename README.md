@@ -4,7 +4,7 @@
 
 ### BTC HD Wallet
 
-This example aims to generate a Bitcoin address using multiple methods and verify if they produce the same addresses.
+This example aims to generate a Bitcoin address using multiple methods and verify if they produce the same one.
 
 ```javascript
 
@@ -18,7 +18,7 @@ This example aims to generate a Bitcoin address using multiple methods and verif
     internalPubkey: toXOnly(keyPair.publicKey),
     network
   })
-  
+
 ```
 
 ## Quickstart
