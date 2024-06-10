@@ -3,19 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
-    "dev": "bun run src/main.js"
+    "dev": "bun run examples/main.js",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": { 
+  "license": "MIT",
+  "dependencies": {
     "bip32": "^4.0.0",
     "bip39": "^3.1.0",
     "bitcoinjs-lib": "^6.1.5",
     "bs58": "^5.0.0",
     "elliptic": "^6.5.5",
     "tiny-secp256k1": "^2.2.3"
+  },
+  "devDependencies": {
+    "vitest": "^1.6.0"
   }
 }

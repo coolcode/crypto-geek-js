@@ -1,5 +1,5 @@
 import bitcoin from 'bitcoinjs-lib'
-import { bip32, mnemonicToAccount } from './util'
+import { bip32, mnemonicToAccount } from '../util'
 
 const generateBitcoinAddress = (mnemonic) => {
   const network = bitcoin.networks.bitcoin

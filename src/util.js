@@ -1,4 +1,3 @@
-import bitcoin from "bitcoinjs-lib"
 import bip39 from 'bip39'
 import { BIP32Factory } from 'bip32'
 import * as ecc from 'tiny-secp256k1'
@@ -12,7 +11,7 @@ const mnemonicToAccount = (mnemonic, network, path) => {
   // console.log("Seed:", seed.toString('hex'))
 
   // Create a root key (uses BIP32)
-  const root = bip32.fromSeed(seed, network ?? bitcoin.networks.bitcoin)
+  const root = bip32.fromSeed(seed, network)
 
   // Derive the first account's extended private key (uses BIP44)
   const account = root.derivePath(path ?? "m/44'/0'/0'")

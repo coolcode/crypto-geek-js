@@ -1,6 +1,10 @@
 # Crypto Geek JS
 
-## BTC HD Wallet
+## Examples
+
+### BTC HD Wallet
+
+This example aims to generate a Bitcoin address using multiple methods and verify if they produce the same addresses.
 
 ```javascript
   const network = bitcoin.networks.bitcoin
@@ -13,16 +17,24 @@
   })
 ```
 
+## Quickstart
+
 To install dependencies:
 
 ```bash
 bun i
 ```
 
-To run:
+To run an example:
 
 ```bash
 bun dev
+```
+
+To run tests:
+
+```bash
+bun test
 ```
 
 This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

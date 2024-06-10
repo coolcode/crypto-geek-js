@@ -2,7 +2,7 @@ import { ec } from 'elliptic'
 import bs58 from 'bs58'
 import crypto from 'crypto'
 import bitcoin from 'bitcoinjs-lib'
-import { bip32, mnemonicToAccount, sha256 } from './util'
+import { mnemonicToAccount, sha256 } from '../util'
 
 const generateBitcoinAddress = (mnemonic) => {
 
