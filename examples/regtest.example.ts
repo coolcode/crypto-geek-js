@@ -42,7 +42,7 @@ const exampleForRegtest = async () => {
   // Non-standard outputs will be rejected, though.
   const { txId: hash, vout: index } = await regtestUtils.faucetComplex(output!, amount)
   console.log("hash:", hash)
-  console.log("link:", `${APIURL}/t/${hash}/json`) 
+  console.log(`${APIURL}/t/${hash}/json`) 
 
   // Sent 420000 sats to taproot address
   const psbt = new bitcoin.Psbt({ network })
@@ -68,7 +68,8 @@ const exampleForRegtest = async () => {
     value: sendAmount,
   })
 
-  console.log(tx.toHex())
+  // console.log(tx.toHex())
+  console.log(`${APIURL}/t/${tx.getId()}/json`) 
   console.log("done!")
 }
 
