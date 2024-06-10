@@ -2,10 +2,11 @@
   "name": "crypto-geek-js",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "main.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run examples/main.js",
+    "example:addr": "bun run examples/addr.example.ts",
+    "example:sign": "bun run examples/sign.example.ts",
     "test": "vitest"
   },
   "keywords": [],
@@ -17,9 +18,11 @@
     "bitcoinjs-lib": "^6.1.5",
     "bs58": "^5.0.0",
     "elliptic": "^6.5.5",
-    "tiny-secp256k1": "^2.2.3"
+    "tiny-secp256k1": "^2.2.3",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/node": "^20.14.2",
     "vitest": "^1.6.0"
   }
 }

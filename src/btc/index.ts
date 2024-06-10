@@ -1,0 +1,3 @@
+export { BitcoinWallet } from './wallet'
+
+ 

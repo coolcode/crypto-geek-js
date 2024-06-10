@@ -28,7 +28,8 @@ bun i
 To run an example:
 
 ```bash
-bun dev
+bun run example:addr
+bun run example:sign
 ```
 
 To run tests:
