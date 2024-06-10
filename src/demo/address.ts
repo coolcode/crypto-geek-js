@@ -1,9 +1,12 @@
 import { BIP32Interface } from "bip32"
 import * as bitcoin from 'bitcoinjs-lib'
-import { ec } from 'elliptic'
+import * as tinysecp from 'tiny-secp256k1'
+// import { ec } from 'elliptic'
 import * as bs58 from 'bs58'
 import * as crypto from 'crypto'
 import { bip32, sha256 } from "~/util"
+
+bitcoin.initEccLib(tinysecp)
 
 export const gen00 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
   const { address } = bitcoin.payments.p2pkh({
@@ -24,7 +27,7 @@ export const gen01 = (account: BIP32Interface, network: bitcoin.Network): string
   return address
 }
 
-export const gen02 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => { 
+export const gen02 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
 
   // Get the public key
   // const secp256k1 = new ec('secp256k1')
@@ -49,4 +52,18 @@ export const gen02 = (account: BIP32Interface, network: bitcoin.Network): string
 
   return address
 }
- 
+
+export const getTaprootAddress = (privateKey: Buffer, network: bitcoin.Network): string | undefined => {
+  const keyPair = bip32.fromPrivateKey(privateKey, Buffer.alloc(32), network)
+  const { address } = bitcoin.payments.p2tr({
+    internalPubkey: toXOnly(keyPair.publicKey),
+    network
+  })
+
+  return address
+}
+
+// Function to convert public key to x-only format for Taproot
+function toXOnly(pubKey: Buffer): Buffer {
+  return pubKey.subarray(1, 33)
+}

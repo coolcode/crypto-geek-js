@@ -7,6 +7,7 @@
   "scripts": {
     "example:addr": "bun run examples/addr.example.ts",
     "example:sign": "bun run examples/sign.example.ts",
+    "example:taproot": "bun run examples/taproot.example.ts",
     "test": "vitest"
   },
   "keywords": [],
