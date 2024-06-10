@@ -28,8 +28,7 @@ bun i
 To run an example:
 
 ```bash
-bun run example:addr
-bun run example:sign
+bun run examples/taproot.example.ts
 ```
 
 To run tests:

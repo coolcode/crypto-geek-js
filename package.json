@@ -19,6 +19,7 @@
     "bitcoinjs-lib": "^6.1.5",
     "bs58": "^5.0.0",
     "elliptic": "^6.5.5",
+    "regtest-client": "^0.2.1",
     "tiny-secp256k1": "^2.2.3",
     "typescript": "^5.4.5"
   },

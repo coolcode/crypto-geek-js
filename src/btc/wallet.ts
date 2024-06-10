@@ -30,7 +30,7 @@ export class BitcoinWallet implements HDWallet {
         }
 
         // If the property is a function, we wrap it to call the original function
-        if (typeof target[prop] === 'function') {
+        if (typeof target[prop]  === 'function') {
           return function (...args: any[]) {
             // console.log(`Calling ${String(prop)} with arguments:`, args)
             const result = target[prop](...args)

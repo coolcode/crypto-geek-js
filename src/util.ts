@@ -3,10 +3,13 @@ import { BIP32Factory } from 'bip32'
 import * as ecc from 'tiny-secp256k1'
 import * as crypto from 'crypto'
 import { Network } from 'bitcoinjs-lib'
+import * as bitcoin from 'bitcoinjs-lib'
+import * as tinysecp from 'tiny-secp256k1'
+bitcoin.initEccLib(tinysecp)
 
-const bip32 = BIP32Factory(ecc)
+export const bip32 = BIP32Factory(ecc)
 
-const mnemonicToAccount = (mnemonic: string, network: Network, path = "m/44'/0'/0'") => {
+export const mnemonicToAccount = (mnemonic: string, network: Network, path = "m/44'/0'/0'") => {
   // Convert the mnemonic to a seed (uses BIP39)
   const seed = mnemonicToSeedSync(mnemonic)
   // console.log("Seed:", seed.toString('hex'))
@@ -23,14 +26,15 @@ const mnemonicToAccount = (mnemonic: string, network: Network, path = "m/44'/0'/
   return account
 }
 
-const sha256 = (data: Buffer) => {
+export const sha256 = (data: Buffer) => {
   return crypto.createHash('sha256').update(data).digest()
 }
 
-// const fromSeed = bip32.fromSeed
+// export const fromSeed = bip32.fromSeed
 
-export {
-  mnemonicToAccount,
-  sha256,
-  bip32
+// Function to convert public key to x-only format for Taproot
+export function toXOnly(pubKey: Buffer): Buffer {
+  return pubKey.subarray(1, 33)
 }
+
+export { bitcoin }
