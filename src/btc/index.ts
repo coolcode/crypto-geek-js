@@ -1,3 +1,3 @@
-export { BitcoinWallet } from './wallet'
+export { BitcoinWallet, addressBuilders } from './wallet'
 
  

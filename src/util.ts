@@ -1,13 +1,16 @@
 import { mnemonicToSeedSync } from 'bip39'
-import { BIP32Factory } from 'bip32'
+import { BIP32API, BIP32Factory } from 'bip32'
 import * as ecc from 'tiny-secp256k1'
 import * as crypto from 'crypto'
 import { Network } from 'bitcoinjs-lib'
 import * as bitcoin from 'bitcoinjs-lib'
+import ECPairFactory from 'ecpair'
 import * as tinysecp from 'tiny-secp256k1'
+
 bitcoin.initEccLib(tinysecp)
 
-export const bip32 = BIP32Factory(ecc)
+export const bip32:BIP32API = BIP32Factory(ecc)
+export const ECPair = ECPairFactory(ecc)
 
 export const mnemonicToAccount = (mnemonic: string, network: Network, path = "m/44'/0'/0'") => {
   // Convert the mnemonic to a seed (uses BIP39)
