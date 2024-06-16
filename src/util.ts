@@ -9,10 +9,10 @@ import * as tinysecp from 'tiny-secp256k1'
 
 bitcoin.initEccLib(tinysecp)
 
-export const bip32:BIP32API = BIP32Factory(ecc)
+export const bip32: BIP32API = BIP32Factory(ecc)
 export const ECPair = ECPairFactory(ecc)
 
-export const mnemonicToAccount = (mnemonic: string, network: Network, path = "m/44'/0'/0'") => {
+export function mnemonicToAccount(mnemonic: string, network: Network, path = "m/44'/0'/0'") {
   // Convert the mnemonic to a seed (uses BIP39)
   const seed = mnemonicToSeedSync(mnemonic)
   // console.log("Seed:", seed.toString('hex'))
@@ -29,7 +29,7 @@ export const mnemonicToAccount = (mnemonic: string, network: Network, path = "m/
   return account
 }
 
-export const sha256 = (data: Buffer) => {
+export function sha256(data: Buffer) {
   return crypto.createHash('sha256').update(data).digest()
 }
 

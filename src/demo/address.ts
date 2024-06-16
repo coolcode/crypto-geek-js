@@ -5,7 +5,7 @@ import * as crypto from 'crypto'
 import { bitcoin, bip32, sha256, toXOnly } from "~/util"
 
 
-export const gen00 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
+export function gen00(account: BIP32Interface, network: bitcoin.Network): string | undefined {
   const { address } = bitcoin.payments.p2pkh({
     pubkey: account.publicKey,
     network
@@ -14,7 +14,7 @@ export const gen00 = (account: BIP32Interface, network: bitcoin.Network): string
   return address
 }
 
-export const gen01 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
+export function gen01(account: BIP32Interface, network: bitcoin.Network): string | undefined {
   const keyPair = bip32.fromPrivateKey(account.privateKey!, account.chainCode, network)
   const { address } = bitcoin.payments.p2pkh({
     pubkey: keyPair.publicKey,
@@ -24,7 +24,7 @@ export const gen01 = (account: BIP32Interface, network: bitcoin.Network): string
   return address
 }
 
-export const gen02 = (account: BIP32Interface, network: bitcoin.Network): string | undefined => {
+export function gen02(account: BIP32Interface, network: bitcoin.Network): string | undefined {
 
   // Get the public key
   // const secp256k1 = new ec('secp256k1')
@@ -50,7 +50,7 @@ export const gen02 = (account: BIP32Interface, network: bitcoin.Network): string
   return address
 }
 
-export const getTaprootAddress = (privateKey: Buffer, network: bitcoin.Network): string | undefined => {
+export function getTaprootAddress(privateKey: Buffer, network: bitcoin.Network): string | undefined {
   const keyPair = bip32.fromPrivateKey(privateKey, Buffer.alloc(32), network)
   const { address } = bitcoin.payments.p2tr({
     internalPubkey: toXOnly(keyPair.publicKey),

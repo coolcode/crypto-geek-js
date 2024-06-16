@@ -2,7 +2,7 @@ import bip39 from 'bip39'
 import bitcoin from 'bitcoinjs-lib'
 import { BitcoinWallet } from '~/btc'
 
-const exampleForBitcoinAccount = () => {
+function exampleForBitcoinAccount() {
   // Generate a mnemonic (uses BIP39)
   const mnemonic = bip39.generateMnemonic()
   console.log("mnemonic:", mnemonic)
@@ -30,9 +30,5 @@ const exampleForBitcoinAccount = () => {
   }
 }
 
-const main = () => {
-  exampleForBitcoinAccount()
-}
-
-main()
+exampleForBitcoinAccount()
 

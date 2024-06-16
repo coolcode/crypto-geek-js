@@ -4,7 +4,7 @@ import { BitcoinWallet } from '~/btc'
 import { getTaprootAddress } from '~/demo/address'
 
 // This example aims to generate a Bitcoin address using multiple methods and verify if they produce the same addresses.
-const exampleForBitcoinAddress = () => {
+function exampleForBitcoinAddress() {
   // Generate a mnemonic (uses BIP39)
   const mnemonic = bip39.generateMnemonic()
   console.log("mnemonic:", mnemonic)
@@ -21,9 +21,4 @@ const exampleForBitcoinAddress = () => {
   }
 }
 
-const main = () => {
-  exampleForBitcoinAddress()
-}
-
-main()
-
+exampleForBitcoinAddress()

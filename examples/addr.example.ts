@@ -5,7 +5,7 @@ import { gen00, gen01, gen02 } from '~/demo/address'
 import { ECPair } from '../src/util'
 
 // This example aims to generate a Bitcoin address using multiple methods and verify if they produce the same addresses.
-const exampleForBitcoinAddress = () => {
+function exampleForBitcoinAddress() {
   // Generate a mnemonic (uses BIP39)
   const mnemonic = bip39.generateMnemonic()
   console.log("mnemonic:", mnemonic)
@@ -43,9 +43,4 @@ const exampleForBitcoinAddress = () => {
   }
 }
 
-const main = () => {
-  exampleForBitcoinAddress()
-}
-
-main()
-
+exampleForBitcoinAddress()

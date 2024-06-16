@@ -4,8 +4,8 @@ import { RegtestUtils } from 'regtest-client'
 
 
 // This example aims to generate a Bitcoin address using multiple methods and verify if they produce the same addresses.
-const exampleForRegtest = async () => {
-  const mnemonic = 'hello abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon'
+async function exampleForRegtest() {
+  const mnemonic = 'test test test test test test test test test test test test'
 
   const APIPASS = process.env.APIPASS || 'satoshi'
   const APIURL = process.env.APIURL || 'https://regtest.bitbank.cc/1'
@@ -16,6 +16,13 @@ const exampleForRegtest = async () => {
   const rootKey = bip32.fromSeed(seed)
   const path = `m/86'/0'/0'/0/0`
   const childNode = rootKey.derivePath(path)
+
+  const { address: legacyAddress } = bitcoin.payments.p2pkh({
+    pubkey: childNode.publicKey,
+    network
+  })
+  console.log("address [legacy]:", legacyAddress)
+
   // Since internalKey is an xOnly pubkey, we drop the DER header byte
   const internalPubkey = toXOnly(childNode.publicKey)
   const { address, output } = bitcoin.payments.p2tr({
@@ -23,7 +30,7 @@ const exampleForRegtest = async () => {
     network
   })
 
-  console.log("address:", address)
+  console.log("address [taproot]:", address)
   const tweakedChildNode = childNode.tweak(
     bitcoin.crypto.taggedHash('TapTweak', internalPubkey),
   )
@@ -42,7 +49,7 @@ const exampleForRegtest = async () => {
   // Non-standard outputs will be rejected, though.
   const { txId: hash, vout: index } = await regtestUtils.faucetComplex(output!, amount)
   console.log("hash:", hash)
-  console.log(`${APIURL}/t/${hash}/json`) 
+  console.log(`${APIURL}/t/${hash}/json`)
 
   // Sent 420000 sats to taproot address
   const psbt = new bitcoin.Psbt({ network })
@@ -69,7 +76,7 @@ const exampleForRegtest = async () => {
   })
 
   // console.log(tx.toHex())
-  console.log(`${APIURL}/t/${tx.getId()}/json`) 
+  console.log(`${APIURL}/t/${tx.getId()}/json`)
   console.log("done!")
 }
 
